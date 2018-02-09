@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from shop.models import Notice, Category
 
 # Create your views here.
@@ -9,7 +9,7 @@ def home(request):
     return render(request, 'index.html', context)
 
 def category(request, slug, pk):
-    context = { 'category_list': Category.objects.all().filter(id=pk).filter(visible=True),
-
+    category_list = get_object_or_404(Category.objects.all().filter(id=pk).filter(visible=True))
+    context = { 'category_list': category_list),
             }
     return render(request, 'category.html', context)
