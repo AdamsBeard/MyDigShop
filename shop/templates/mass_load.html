@@ -1,0 +1,21 @@
+{% extends 'admin/base_site.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div id="content-main">
+	<h2>Загрузка из файла:</h2>
+	<form action="/admin/shop/goods_mass_load/add_file/" method="post" id="form">
+	{% csrf_token %}
+	{{ form_file }}
+	<input type="submit" value="Добавить товар">
+	</form>
+
+	<h2>Загрузка из списка:</h2>
+	<form action="/admin/shop/goods_mass_load/add_text/" method="post" id="form">
+	{% csrf_token %}
+	{{ form_text}}
+	<input type="submit" value="Добавить товар">
+	</form>
+</div>
+{% endblock %}

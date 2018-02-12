@@ -1,6 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container">
+  <div class="row">
+    <div class='col-12'>
+        <div class="card-body">
+          <h5>Скрипт MyDigShop</h5>
+          <p>Данный скрипт умеет продавать цифровые товары в текстовом формате,
+           отправляя товар на указанную почту и сохраняя историю покупок пользователя по почте.
+           В скрипте реализована продажа товаров при помощи QIWI и Яндекс Деньги. <br>
+           Проект написан на framework Django и языке Python.</p>
+          <a href="#" class="btn btn-warning">GitHub Source</a>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="container border-top">
+  <div class="row">
+  {% if notice_list %}
+    <div class="col-12" >
+      <div class="card-body">
+    <h5>Объявления</h5>
+    {% for notice in notice_list %}
+      {{ forloop.counter }}: {{ notice.title }}<br />
+      {{ notice.desc }}<br /><br />
+    {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+  {% endif %}
 <div class=container>
   <div class="list-group">
   {% for category in category_list %}
@@ -8,5 +37,4 @@
   {% endfor %}
   </div>
 </div>
-
-{% endblock content %}
+{% endblock %}

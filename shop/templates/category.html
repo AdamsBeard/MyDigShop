@@ -1,4 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container">
+  <div class="row">
+    <div class='col-12'>
+		<h1>{{ category_list.title }}</h1><br>
+		<p>{{ category_list.desc }}</p>
+		<p>{{ category_list.price }} руб.</p>
+			<div class="form-group">
+				<form action="/buy" method="post">
+				{% csrf_token %}
+				{{ form }}
+				<input class="btn btn-warning" type="submit" value="Купить">
+				</form>
+			</div>
+			<form class="form-inline" action="/buy" method="post">
+			  <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Email">
+
+			  <div class="input-group mb-2 mr-sm-2">
+			    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
+			  </div>
+
+			  <button type="submit" class="btn btn-warning mb-2">Купить</button>
+			</form>
+    </div>
+  </div>
+</div>
 {% endblock %}
